@@ -1,0 +1,43 @@
+<h2>Show card</h2>
+
+<ul>
+
+  <li>
+    <strong>Image number:</strong>
+    <%= @card.image_number %>
+  </li>
+
+  <li>
+    <strong>Title:</strong>
+    <%= @card.title %>
+  </li>
+
+  <li>
+    <strong>Left attribute:</strong>
+    <%= @card.left_attribute %>
+  </li>
+
+  <li>
+    <strong>Left value:</strong>
+    <%= @card.left_value %>
+  </li>
+
+  <li>
+    <strong>Right attribute:</strong>
+    <%= @card.right_attribute %>
+  </li>
+
+  <li>
+    <strong>Right value:</strong>
+    <%= @card.right_value %>
+  </li>
+
+  <li>
+    <strong>Quote:</strong>
+    <%= @card.quote %>
+  </li>
+
+</ul>
+
+<%= link "Edit", to: card_path(@conn, :edit, @card) %>
+<%= link "Back", to: card_path(@conn, :index) %>
