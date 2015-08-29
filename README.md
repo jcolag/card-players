@@ -1,19 +1,5 @@
-# CardPlayers
+# Card Players
 
-To start your Phoenix app:
+Card Players is a simple, non-interactive web-based card game taking the results of [AC-Resolve](https://github.com/jcolag/AC-Resolve) to experiment with the Phoenix web framework.  The "play" should be identical to the example game there.
 
-  1. Install dependencies with `mix deps.get`
-  2. Create and migrate your database with `mix ecto.create && mix ecto.migrate`
-  3. Start Phoenix endpoint with `mix phoenix.server`
 
-Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
-
-Ready to run in production? Please [check our deployment guides](http://www.phoenixframework.org/docs/deployment).
-
-## Learn more
-
-  * Official website: http://www.phoenixframework.org/
-  * Guides: http://phoenixframework.org/docs/overview
-  * Docs: http://hexdocs.pm/phoenix
-  * Mailing list: http://groups.google.com/group/phoenix-talk
-  * Source: https://github.com/phoenixframework/phoenix
