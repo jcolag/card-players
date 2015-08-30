@@ -13,8 +13,8 @@ defmodule CardPlayers.Card do
     timestamps
   end
 
-  @required_fields ~w(image_number title left_attribute left_value right_attribute right_value quote)
-  @optional_fields ~w()
+  @required_fields ~w(image_number left_attribute left_value right_attribute right_value)
+  @optional_fields ~w(title quote)
 
   @doc """
   Creates a changeset based on the `model` and `params`.
