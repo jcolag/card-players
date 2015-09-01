@@ -18,6 +18,7 @@ defmodule CardPlayers.Router do
 
     get "/", PageController, :index
     resources "/cards", CardController
+    resources "/games", GameController
   end
 
   # Other scopes may use custom stacks.
