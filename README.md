@@ -2,4 +2,5 @@
 
 Card Players is a simple, non-interactive web-based card game taking the results of [AC-Resolve](https://github.com/jcolag/AC-Resolve) to experiment with the Phoenix web framework.  The "play" should be identical to the example game there.
 
-
+It uses, as standard, my card data and card images from [AttaCard-Generator
+](https://github.com/jcolag/AttaCard-Generator).
