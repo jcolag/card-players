@@ -1,4 +1,4 @@
-defmodule Resolve do
+defmodule CardPlayers.RollResolve do
 # NB: run :random.seed(:os.timestamp) before using
   defp one_die(sides \\ 10) do
     round(:random.uniform * sides + 0.5)

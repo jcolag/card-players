@@ -1,4 +1,4 @@
-defmodule Game1 do
+defmodule CardPlayers.GameResolve do
   defp parse_int(name) do
     { i, _ } = :string.to_integer(to_char_list(name))
     i
