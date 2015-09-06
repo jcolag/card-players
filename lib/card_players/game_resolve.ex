@@ -62,7 +62,10 @@ defmodule CardPlayers.GameResolve do
     [result] ++ history
   end
 
-  def go(infile \\ "cards.csv", handsize \\ 3) do
+  def go(cards, handsize \\ 3) do
+  end
+
+  def go_old(infile \\ "cards.csv", handsize \\ 3) do
     :random.seed(:os.timestamp)
     {:ok, body} = File.read infile
     lines = String.split(body, "\n")

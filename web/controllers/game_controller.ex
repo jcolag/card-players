@@ -1,11 +1,15 @@
 defmodule CardPlayers.GameController do
   use CardPlayers.Web, :controller
+  import CardPlayers.RollResolve
+  import CardPlayers.GameResolve
 
   alias CardPlayers.Game
 
   plug :scrub_params, "game" when action in [:create, :update]
 
   def index(conn, _params) do
+    cards = Repo.all(CardPlayers.Card)
+    CardPlayers.GameResolve.go(cards)
     games = Repo.all(Game)
     render(conn, "index.html", games: games)
   end
