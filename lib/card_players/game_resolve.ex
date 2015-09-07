@@ -12,17 +12,17 @@ defmodule CardPlayers.GameResolve do
 
   defp sum(who, hand) do
     Enum.reduce hand, who, fn card, acc ->
-      left_tag = Enum.fetch!(card, 1)
-      right_tag = Enum.fetch!(card, 3)
-      left_value = update(acc, left_tag, Enum.fetch!(card, 2))
-      right_value = update(acc, right_tag, Enum.fetch!(card, 4))
+      left_tag = card.left_attribute
+      right_tag = card.right_attribute
+      left_value = update(acc, left_tag, card.left_value)
+      right_value = update(acc, right_tag, card.right_value)
       x = Map.put(acc, left_tag, left_value)
       Map.put(x, right_tag, right_value)
     end
   end
 
   defp strike(attacker, defender) do
-    Resolve.action(attacker["Aim"], attacker["Force"], defender["Evade"], defender["Defend"])
+    CardPlayers.RollResolve.action(attacker["Aim"], attacker["Force"], defender["Evade"], defender["Defend"])
   end
 
   defp fight(first, _ = %{hp: hps}, _)
@@ -63,6 +63,11 @@ defmodule CardPlayers.GameResolve do
   end
 
   def go(cards, handsize \\ 3) do
+    :random.seed(:os.timestamp)
+    cards = Enum.shuffle(cards)
+    hands = Enum.chunk(Enum.chunk(cards, handsize), 2)
+    empty = %{"Aim" => 0, "Force" => 0, "Evade" => 0, "Defend" => 0}
+    deal(empty, hands)
   end
 
   def go_old(infile \\ "cards.csv", handsize \\ 3) do

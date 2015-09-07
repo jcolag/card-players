@@ -9,9 +9,8 @@ defmodule CardPlayers.GameController do
 
   def index(conn, _params) do
     cards = Repo.all(CardPlayers.Card)
-    CardPlayers.GameResolve.go(cards)
-    games = Repo.all(Game)
-    render(conn, "index.html", games: games)
+    hands = CardPlayers.GameResolve.go(cards)
+    render(conn, "index.html", hands: hands)
   end
 
   def new(conn, _params) do
