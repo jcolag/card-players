@@ -40,7 +40,8 @@ defmodule CardPlayers.GameResolve do
   end
 
   defp fight(first, second = %{hp: hps}, rounds) do
-    hps = hps - strike(first, second)
+    {damage, faces} = strike(first, second)
+    hps = hps - damage
     second = Map.put(second, :hp, hps)
     fight(second, first, rounds - 1)
   end

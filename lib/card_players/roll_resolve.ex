@@ -7,19 +7,22 @@ defmodule CardPlayers.RollResolve do
   defp dice(recurse \\ -1) do
     left = one_die()
     right = one_die()
+    list = []
     doubles = 0
     if recurse != 0 and left == right do
-      doubles = dice(recurse - 1)
+      {doubles, faces} = dice(recurse - 1)
+      list = faces
     end
-    left + right + doubles
+    list = [left, right] ++ list
+    {left + right + doubles, list}
   end
 
   def action(aim, force, evade, defend) do
-    t = target(aim, evade, true)
+    {t, faces} = target(aim, evade, true)
     if t do
-      damage(force, defend, t)
+      {damage(force, defend, t), faces}
     else
-      0
+      {0, faces}
     end
   end
 
@@ -34,12 +37,14 @@ defmodule CardPlayers.RollResolve do
   end
 
   def target(aim, evade, want \\ false) do
-    t = aim + dice - evade + 11
-    cond do
+    {total, faces} = dice
+    t = aim + total - evade + 11
+    ret = cond do
       !want -> t > 0
       t >= 0 -> round(:math.sqrt(t) - 0.5)
       true -> nil
     end
+    {ret, faces}
   end
 
   def damage(force, defend, critical \\ 0) do
