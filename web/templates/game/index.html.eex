@@ -1,5 +1,10 @@
 <h2>Listing games</h2>
 
 <%= for hand <- @hands do %>
-  <p><%= hand %></p>
+  <%= for turn <- hand.fight do %>
+    <p>
+      <%= turn.player %>
+    </p>
+  <% end %>
+  <hr>
 <% end %>

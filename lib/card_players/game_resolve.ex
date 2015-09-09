@@ -1,4 +1,12 @@
 defmodule CardPlayers.GameResolve do
+  defmodule Turn do
+    defstruct player: "None", dice: [], damage: 0
+  end
+
+  defmodule Fight do
+    defstruct first: [], second: [], fight: []
+  end
+
   defp parse_int(name) do
     { i, _ } = :string.to_integer(to_char_list(name))
     i
@@ -27,23 +35,24 @@ defmodule CardPlayers.GameResolve do
 
   defp fight(first, _ = %{hp: hps}, _)
     when hps <= 0 do
-    first.name
+    [%Turn{ player: first.name }]
   end
 
   defp fight(first = %{"Aim": aim, "Force": force}, _, _)
     when aim <= 0 or force <= 0 do
-    first.name
+    [%Turn{ player: first.name }]
   end
 
   defp fight(_, _, 0) do
-    "Draw"
+    [%Turn{ player: "Draw" }]
   end
 
   defp fight(first, second = %{hp: hps}, rounds) do
     {damage, faces} = strike(first, second)
     hps = hps - damage
+    result = %Turn{ player: first.name, dice: faces, damage: damage }
     second = Map.put(second, :hp, hps)
-    fight(second, first, rounds - 1)
+    [ result ] ++ fight(second, first, rounds - 1)
   end
 
   defp deal(_, []) do
@@ -58,9 +67,9 @@ defmodule CardPlayers.GameResolve do
     schar = sum(empty, second)
     schar = Map.put_new(schar, :hp, schar["Defend"])
     schar = Map.put_new(schar, :name, "Second")
-    result = fight(fchar, schar, 30)
+    result = %Fight{ fight: fight(fchar, schar, 30) }
     history = deal(empty, tail)
-    [result] ++ history
+    [result | history]
   end
 
   def go(cards, handsize \\ 3) do
