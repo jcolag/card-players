@@ -67,7 +67,7 @@ defmodule CardPlayers.GameResolve do
     schar = sum(empty, second)
     schar = Map.put_new(schar, :hp, schar["Defend"])
     schar = Map.put_new(schar, :name, "Second")
-    result = %Fight{ fight: fight(fchar, schar, 30) }
+    result = %Fight{ first: first, second: second, fight: fight(fchar, schar, 30) }
     history = deal(empty, tail)
     [result | history]
   end

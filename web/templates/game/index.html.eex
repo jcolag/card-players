@@ -1,9 +1,25 @@
 <h2>Listing games</h2>
 
 <%= for hand <- @hands do %>
+  <%= for card <- hand.first do %>
+    <img src="/images/cbat_<%= if card.image_number < 10 do "0" end %><%= card.image_number %>.png" width="20%">
+  <% end %>
+  <p>&hellip;versus&hellip;</p>
+  <%= for card <- hand.second do %>
+    <img src="/images/cbat_<%= if card.image_number < 10 do "0" end %><%= card.image_number %>.png" width="20%">
+  <% end %>
   <%= for turn <- hand.fight do %>
     <p>
       <%= turn.player %>
+      rolls&hellip;
+      <%= for face <- turn.dice do %>
+        <%= face %>,
+      <% end %>
+      for a total of
+      <%= List.foldr(turn.dice, 0, fn (x, acc) -> x + acc end) %>
+      dealing
+      <%= turn.damage %>
+      points of damage.
     </p>
   <% end %>
   <hr>
