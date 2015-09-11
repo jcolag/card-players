@@ -11,15 +11,19 @@
   <%= for turn <- hand.fight do %>
     <p>
       <%= turn.player %>
-      rolls&hellip;
-      <%= for face <- turn.dice do %>
-        <%= face %>,
+      <%= if turn.dice == [] do %>
+        Hand over&hellip;
+      <%= else %>
+        rolls&hellip;
+        <%= for face <- turn.dice do %>
+          <%= face %>,
+        <% end %>
+        for a total of
+        <%= List.foldr(turn.dice, 0, fn (x, acc) -> x + acc end) %>
+        dealing
+        <%= turn.damage %>
+        points of damage.
       <% end %>
-      for a total of
-      <%= List.foldr(turn.dice, 0, fn (x, acc) -> x + acc end) %>
-      dealing
-      <%= turn.damage %>
-      points of damage.
     </p>
   <% end %>
   <hr>

@@ -33,18 +33,18 @@ defmodule CardPlayers.GameResolve do
     CardPlayers.RollResolve.action(attacker["Aim"], attacker["Force"], defender["Evade"], defender["Defend"])
   end
 
-  defp fight(first, _ = %{hp: hps}, _)
+  defp fight(_ = %{hp: hps, name: name}, _, _)
     when hps <= 0 do
-    [%Turn{ player: first.name }]
+    [%Turn{ player: name <> " falls!" }]
   end
 
-  defp fight(first = %{"Aim": aim, "Force": force}, _, _)
+  defp fight(first = %{"Aim": aim, "Force": force}, second = %{name: name}, _)
     when aim <= 0 or force <= 0 do
-    [%Turn{ player: first.name }]
+    [%Turn{ player: name <> " can't fight!" }]
   end
 
   defp fight(_, _, 0) do
-    [%Turn{ player: "Draw" }]
+    [%Turn{ player: "Draw!" }]
   end
 
   defp fight(first, second = %{hp: hps}, rounds) do
