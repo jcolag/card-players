@@ -1,7 +1,5 @@
 defmodule CardPlayers.GameController do
   use CardPlayers.Web, :controller
-  import CardPlayers.RollResolve
-  import CardPlayers.GameResolve
 
   alias CardPlayers.Game
 
