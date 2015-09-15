@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Hello Phoenix!</title>
+    <title>Automatic Card Players</title>
     <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
   </head>
 
@@ -15,10 +15,12 @@
     <div class="container" role="main">
       <div class="header">
         <ul class="nav nav-pills pull-right">
-          <li><a href="http://www.phoenixframework.org/docs">Get Started</a></li>
+          <li><a href="https://github.com/jcolag/AttaCard-Generator.git">Check out the<br>card generator!</a></li>
         </ul>
         <span class="logo"></span>
       </div>
+
+      <div class="github-ribbon" style="position:fixed;right:0;top:0;width:150px;height:150px;overflow:hidden;z-index:9999;"><a target="_blank" style="display: inline-block; width: 200px; overflow: hidden; padding: 6px 0px; text-align: center; transform: rotate(45deg); text-decoration: none; color: rgb(255, 255, 255); position: inherit; top: 45px; right: -40px; font: 700 13px &quot;Helvetica Neue&quot;,Helvetica,Arial,sans-serif; box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.5); background-color: rgb(170, 0, 0); background-image: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.15)); border-width: 1px 0px; border-style: dotted; border-color: rgba(255, 255, 255, 0.7);" href="https://github.com/jcolag/card-players.git">Fork me on GitHub</a></div>
 
       <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
       <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
