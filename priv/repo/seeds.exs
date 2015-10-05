@@ -11,7 +11,7 @@
 # and so on) as they will fail if something goes wrong.
 alias CardPlayers.Card
 CardPlayers.Repo.insert!(%Card{image_number: 0, title: "Clumsy", left_attribute: "Aim", left_value: 1, right_attribute: "Evade", right_value: 1, quote: "I may not have been paying attention that day..."})
-CardPlayers.Repo.insert!(%Card{image_number: 1, title: "Flailing", left_attribute: "Aim", left_value: 2, right_attribute: "Force", right_value: 14, quote: "I fired blind"})
+CardPlayers.Repo.insert!(%Card{image_number: 1, title: "Flailing", left_attribute: "Aim", left_value: 2, right_attribute: "Force", right_value: 14, quote: "I fired blind hoping that I could hit my target anyway."})
 CardPlayers.Repo.insert!(%Card{image_number: 2, title: "", left_attribute: "Aim", left_value: 3, right_attribute: "Defend", right_value: 9, quote: ""})
 CardPlayers.Repo.insert!(%Card{image_number: 3, title: "", left_attribute: "Aim", left_value: 4, right_attribute: "Evade", right_value: 8, quote: ""})
 CardPlayers.Repo.insert!(%Card{image_number: 4, title: "", left_attribute: "Aim", left_value: 5, right_attribute: "Evade", right_value: 7, quote: ""})
