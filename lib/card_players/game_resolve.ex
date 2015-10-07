@@ -79,18 +79,5 @@ defmodule CardPlayers.GameResolve do
     empty = %{"Aim" => 0, "Force" => 0, "Evade" => 0, "Defend" => 0}
     deal(empty, hands)
   end
-
-  def go_old(infile \\ "cards.csv", handsize \\ 3) do
-    :random.seed(:os.timestamp)
-    {:ok, body} = File.read infile
-    lines = String.split(body, "\n")
-    lines = Enum.map(lines, fn(x) -> String.split(x, ",") end)
-    lines = List.delete_at(lines, 0)
-    lines = List.delete(lines, [""])
-    lines = Enum.shuffle(lines)
-    hands = Enum.chunk(Enum.chunk(lines, handsize), 2)
-    empty = %{"Aim" => 0, "Force" => 0, "Evade" => 0, "Defend" => 0}
-    deal(empty, hands)
-  end
 end
 
